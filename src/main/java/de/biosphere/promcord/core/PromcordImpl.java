@@ -3,6 +3,7 @@ package de.biosphere.promcord.core;
 import de.biosphere.promcord.StatisticsHandlerCollector;
 import de.biosphere.promcord.handler.guild.GuildMemberCountChangeListener;
 import de.biosphere.promcord.handler.guild.UserOnlineStatusListener;
+import de.biosphere.promcord.handler.message.MessageReactionListener;
 import de.biosphere.promcord.handler.message.MessageRecieverListener;
 import io.prometheus.client.exporter.HTTPServer;
 import net.dv8tion.jda.core.AccountType;
@@ -47,7 +48,8 @@ public class PromcordImpl implements Promcord {
             jdaBuilder.addEventListener(
                     new MessageRecieverListener(),
                     new GuildMemberCountChangeListener(),
-                    new UserOnlineStatusListener());
+                    new UserOnlineStatusListener(),
+                    new MessageReactionListener());
             return jdaBuilder.build().awaitReady();
         } catch (Exception exception) {
             logger.error("Encountered exception while initializing ShardManager!");
