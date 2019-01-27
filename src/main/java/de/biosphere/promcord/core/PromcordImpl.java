@@ -2,6 +2,7 @@ package de.biosphere.promcord.core;
 
 import de.biosphere.promcord.StatisticsHandlerCollector;
 import de.biosphere.promcord.handler.guild.GuildMemberCountChangeListener;
+import de.biosphere.promcord.handler.guild.UserGameListener;
 import de.biosphere.promcord.handler.guild.UserOnlineStatusListener;
 import de.biosphere.promcord.handler.message.MessageReactionListener;
 import de.biosphere.promcord.handler.message.MessageRecieverListener;
@@ -49,6 +50,7 @@ public class PromcordImpl implements Promcord {
                     new MessageRecieverListener(),
                     new GuildMemberCountChangeListener(),
                     new UserOnlineStatusListener(),
+                    new UserGameListener(),
                     new MessageReactionListener());
             return jdaBuilder.build().awaitReady();
         } catch (Exception exception) {
