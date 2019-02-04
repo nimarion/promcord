@@ -83,7 +83,7 @@ public class MessageRecieverListener extends ListenerAdapter {
     }
 
     private void recordToxicityScore(final Message message){
-        final RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), perspectivePayload.replace("message", message.getContentRaw()));
+        final RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), perspectivePayload.replace("message", message.getContentDisplay()));
         final Request request = new Request.Builder().url("https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=" + System.getenv("PERSPECTIVE_KEY")).post(requestBody).build();
         try {
             final Response response = okHttpClient.newCall(request).execute();
