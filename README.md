@@ -5,6 +5,24 @@
 
 # promcord
 
+<table>
+<tr>
+<td>
+  A service which provides metrics from a Discord server to create insight and alerting on actions and messages.
+</td>
+</tr>
+</table>
+
 # Screenshots
 
 ![Image of Grafana](https://i.imgur.com/2EArDun.png)
+
+## Built with 
+
+- [JDA](https://github.com/DV8FromTheWorld/JDA) - Java wrapper for the popular chat & VOIP service  [@discordapp](https://github.com/discordapp)
+- [Prometheus](https://prometheus.io/) 
+- [Perspective API](https://www.perspectiveapi.com/) 
+
+## [License](https://github.com/Biospheere/promcord/blob/master/LICENSE)
+
+MIT © [Niklas](https://github.com/Biospheere/)
