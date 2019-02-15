@@ -13,7 +13,15 @@
 </tr>
 </table>
 
-# Screenshots
+## Running
+
+Just set the required values inside your .env file.
+```bash
+docker pull biospheere/promcord
+docker run --env-file ./env biospheere/promcord
+```
+
+## Screenshots
 
 ![Image of Grafana](https://i.imgur.com/2EArDun.png)
 
