@@ -67,7 +67,9 @@ public class MessageRecieverListener extends ListenerAdapter {
             final String emote = matcher.group();
             msg_emote_count.labels(channel.getGuild().getId(), channel.getId(), user.getId(), emote.split(":")[1]).inc();
         }
-        recordToxicityScore(event.getMessage());
+        if(System.getenv("PERSPECTIVE_KEY") != null){
+            recordToxicityScore(event.getMessage());
+        }
     }
 
     private void recordMessageWordCount(final TextChannel channel, final User user, final int length) {
