@@ -26,13 +26,13 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>3.8.1_450</version>
+            <version>3.8.3_460</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.sentry/sentry-logback -->
         <dependency>
             <groupId>io.sentry</groupId>
             <artifactId>sentry-logback</artifactId>
-            <version>1.7.16</version>
+            <version>1.7.21</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.prometheus/simpleclient_httpserver -->
         <dependency>
