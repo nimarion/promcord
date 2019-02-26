@@ -7,7 +7,7 @@ import io.prometheus.client.Gauge;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import okhttp3.*;
 
@@ -46,16 +46,14 @@ public class MessageRecieverListener extends ListenerAdapter {
                 "}";
     }
 
+
     @Override
-    public void onMessageReceived(MessageReceivedEvent event) {
-        if (!event.getChannelType().isGuild()) {
-            return;
-        }
+    public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         if (event.getAuthor().isBot()) {
             return;
         }
 
-        final TextChannel channel = event.getTextChannel();
+        final TextChannel channel = event.getChannel();
         final User user = event.getAuthor();
 
         recordMessageCount(channel, user);
@@ -96,4 +94,5 @@ public class MessageRecieverListener extends ListenerAdapter {
             exception.printStackTrace();
         }
     }
+
 }
