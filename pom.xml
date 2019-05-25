@@ -26,7 +26,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>3.8.3_460</version>
+            <version>3.8.3_463</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.sentry/sentry-logback -->
         <dependency>
