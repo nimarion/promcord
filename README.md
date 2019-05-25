@@ -5,21 +5,11 @@
 
 # promcord
 
-<table>
-<tr>
-<td>
-  A service which provides metrics from a Discord server to create insight and alerting on actions and messages.
-</td>
-</tr>
-</table>
+Promcord is a Discord bot which provides metrics from a Discord server to create insight and alerting on actions and messages. Using [Grafana](https://grafana.com/) you can easily visualize all your metrics in beautiful dashboards.
 
-## Running
+## Installation
 
-Just set the required values inside your .env file.
-```bash
-docker pull biospheere/promcord
-docker run --env-file ./env biospheere/promcord
-```
+Use Docker Compose to install promcord. 
 
 ## Screenshots
 
@@ -31,6 +21,9 @@ docker run --env-file ./env biospheere/promcord
 - [Prometheus](https://prometheus.io/) 
 - [Perspective API](https://www.perspectiveapi.com/) 
 
-## [License](https://github.com/Biospheere/promcord/blob/master/LICENSE)
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Easiest way of reaching me is via [Discord](https://c0debase.de/).
 
+## [License](https://github.com/Biospheere/promcord/blob/master/LICENSE)
 MIT © [Niklas](https://github.com/Biospheere/)
