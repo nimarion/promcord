@@ -7,7 +7,7 @@ import io.prometheus.client.Gauge;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.core.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 import okhttp3.*;
 
@@ -46,16 +46,14 @@ public class MessageRecieverListener extends ListenerAdapter {
                 "}";
     }
 
+
     @Override
-    public void onMessageReceived(MessageReceivedEvent event) {
-        if (!event.getChannelType().isGuild()) {
-            return;
-        }
+    public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         if (event.getAuthor().isBot()) {
             return;
         }
 
-        final TextChannel channel = event.getTextChannel();
+        final TextChannel channel = event.getChannel();
         final User user = event.getAuthor();
 
         recordMessageCount(channel, user);
@@ -67,7 +65,9 @@ public class MessageRecieverListener extends ListenerAdapter {
             final String emote = matcher.group();
             msg_emote_count.labels(channel.getGuild().getId(), channel.getId(), user.getId(), emote.split(":")[1]).inc();
         }
-        recordToxicityScore(event.getMessage());
+        if(System.getenv("PERSPECTIVE_KEY") != null){
+            recordToxicityScore(event.getMessage());
+        }
     }
 
     private void recordMessageWordCount(final TextChannel channel, final User user, final int length) {
@@ -83,7 +83,7 @@ public class MessageRecieverListener extends ListenerAdapter {
     }
 
     private void recordToxicityScore(final Message message){
-        final RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), perspectivePayload.replace("message", message.getContentRaw()));
+        final RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), perspectivePayload.replace("message", message.getContentDisplay()));
         final Request request = new Request.Builder().url("https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=" + System.getenv("PERSPECTIVE_KEY")).post(requestBody).build();
         try {
             final Response response = okHttpClient.newCall(request).execute();
@@ -94,4 +94,5 @@ public class MessageRecieverListener extends ListenerAdapter {
             exception.printStackTrace();
         }
     }
+
 }
