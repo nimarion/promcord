@@ -3,6 +3,11 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/biospheere/promcord.svg)](https://github.com/Biospheere/promcord/graphs/contributors/)
 [![c0debase Discord](https://discordapp.com/api/guilds/361448651748540426/embed.png)](discord.gg/cDV38ht)
 
+<h1 align="center">
+  <img src="https://i.imgur.com/qaEw7mF.png" alt="promcord" width="500">
+  <br>
+</h1>
+
 # promcord
 
 Promcord is a Discord bot which provides metrics from a Discord server to create insight and alerting on actions and messages. Using [Grafana](https://grafana.com/) you can easily visualize all your metrics in beautiful dashboards.
