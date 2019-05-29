@@ -10,6 +10,24 @@ Promcord is a Discord bot which provides metrics from a Discord server to create
 ## Installation
 
 Use Docker Compose to install promcord. 
+If you have already created a Discord Bot you can skip this step. 
+Otherwise, see [this](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token) introduction on how to create a Discord bot and get the token of your new bot.
+
+Create a .env file and set the required values in it.
+
+```
+DISCORD_TOKEN=<your token>
+```
+
+Start the Docker containers with the following command: 
+
+```
+docker-compose up -d
+```
+
+To run Grafana open your browser and go to [http://your-ip:80](http://localhost:80). Then follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server. 
+
+
 
 ## Screenshots
 
