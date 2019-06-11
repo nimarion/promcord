@@ -46,7 +46,7 @@ To run Grafana open your browser and go to [http://your-ip:80](http://localhost:
   - `emote` name of the reaction or in the message
   - `guildID` to identify the guild where the message was sent into
   
- - **Toxicity**  
+- **Toxicity**  
   - `channelID` of the text channel the message was sent into
   - `guildID` of the guild the message was sent into
   - `userID` of the author
