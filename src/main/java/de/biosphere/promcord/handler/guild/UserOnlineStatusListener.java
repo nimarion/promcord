@@ -1,10 +1,10 @@
 package de.biosphere.promcord.handler.guild;
 
 import io.prometheus.client.Gauge;
-import net.dv8tion.jda.core.OnlineStatus;
-import net.dv8tion.jda.core.events.guild.GuildReadyEvent;
-import net.dv8tion.jda.core.events.user.update.UserUpdateOnlineStatusEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.OnlineStatus;
+import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
+import net.dv8tion.jda.api.events.user.update.UserUpdateOnlineStatusEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class UserOnlineStatusListener extends ListenerAdapter {
 

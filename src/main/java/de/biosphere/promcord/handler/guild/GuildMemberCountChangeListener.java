@@ -1,10 +1,10 @@
 package de.biosphere.promcord.handler.guild;
 
 import io.prometheus.client.Gauge;
-import net.dv8tion.jda.core.events.guild.GuildReadyEvent;
-import net.dv8tion.jda.core.events.guild.member.GuildMemberJoinEvent;
-import net.dv8tion.jda.core.events.guild.member.GuildMemberLeaveEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
+import net.dv8tion.jda.api.events.guild.member.GuildMemberLeaveEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class GuildMemberCountChangeListener extends ListenerAdapter {
 
@@ -28,4 +28,5 @@ public class GuildMemberCountChangeListener extends ListenerAdapter {
     public void onGuildReady(GuildReadyEvent event) {
         member_count.labels(event.getGuild().getId()).set(event.getGuild().getMembers().size());
     }
+
 }
