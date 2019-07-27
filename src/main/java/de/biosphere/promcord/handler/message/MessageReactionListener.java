@@ -2,9 +2,9 @@ package de.biosphere.promcord.handler.message;
 
 import com.vdurmont.emoji.EmojiManager;
 import io.prometheus.client.Counter;
-import net.dv8tion.jda.core.entities.MessageReaction;
-import net.dv8tion.jda.core.events.message.guild.react.GuildMessageReactionAddEvent;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.entities.MessageReaction;
+import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 public class MessageReactionListener extends ListenerAdapter {
 
@@ -32,4 +32,5 @@ public class MessageReactionListener extends ListenerAdapter {
             return emote.getName();
         }
     }
+
 }

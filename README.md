@@ -32,8 +32,38 @@ docker-compose up -d
 
 To run Grafana open your browser and go to [http://your-ip:80](http://localhost:80). Then follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server. 
 
+## Collected data
 
+- **Messages**  
+  - `channelID` of the text channel the message was sent into
+  - `contentLength` of the message content
+  - `wordCount` of the message content
+  - `guildID` of the guild the message was sent into
+  - `userID` of the author
+  
+- **Emotes**  
+  - `channelID` of the text channel the message was sent into
+  - `emote` name of the reaction or in the message
+  - `guildID` to identify the guild where the message was sent into
+  
+- **Toxicity**  
+  - `channelID` of the text channel the message was sent into
+  - `guildID` of the guild the message was sent into
+  - `userID` of the author
+  - `toxicityScore` calculated by PerspectiveAPI
+  
+- **Number of members**  
+  - `guildID` of the guild
+  - `memberCount`of the guild
 
+- **Games**  
+  - `guildID` of the guild
+  - `game` name of the game
+  
+- **Online status**  
+  - `guildID` of the guild
+  - `onlineCount` of the guild
+  
 ## Screenshots
 
 ![Image of Grafana](https://i.imgur.com/2EArDun.png)
