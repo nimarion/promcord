@@ -1,0 +1,29 @@
+name: Build and deploy on push
+
+on: [push]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build with Maven
+      uses: LucaFeger/action-maven-cli@765e218a50f02a12a7596dc9e7321fc385888a27
+      with:
+        args: clean install
+    - name: Login to GitHub Package Registry
+      uses: actions/docker/login@master
+      env: 
+        DOCKER_REGISTRY_URL : docker.pkg.github.com
+        DOCKER_USERNAME: Biospheere
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Build Docker Image
+      uses: actions/docker/cli@master
+      with:
+        args: build -t docker.pkg.github.com/biospheere/promcord/promcord . 
+    - name: Push to GitHub Package Registry
+      if: github.ref == 'master'  &&  github.event == 'push'
+      uses: actions/docker/cli@master
+      with:
+        args: push docker.pkg.github.com/biospheere/promcord/promcord    
