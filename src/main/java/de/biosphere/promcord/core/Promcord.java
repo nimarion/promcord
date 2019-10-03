@@ -14,6 +14,8 @@ import net.dv8tion.jda.api.JDABuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Optional;
+
 
 public class Promcord {
 
@@ -28,7 +30,7 @@ public class Promcord {
         jda = initializeJDA();
         logger.info("JDA set up!");
 
-        final HTTPServer prometheusServer = new HTTPServer(8080);
+        final HTTPServer prometheusServer = new HTTPServer(getHttpPort().orElse(8080));
 
         new StatisticsHandlerCollector(this).register();
 
@@ -58,6 +60,18 @@ public class Promcord {
         } catch (Exception exception) {
             logger.error("Encountered exception while initializing ShardManager!");
             throw exception;
+        }
+    }
+
+    private Optional<Integer> getHttpPort() {
+        final String port = System.getenv("HTTP_PORT");
+        if (port == null)
+            return Optional.empty();
+        try {
+            return Optional.of(Integer.parseInt(port));
+        } catch (NumberFormatException ignored) {
+            logger.warn("HTTP_PORT should be a valid number, using 8080 as fallback");
+            return Optional.empty();
         }
     }
 
