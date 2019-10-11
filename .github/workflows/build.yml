@@ -1,0 +1,14 @@
+name: Build
+
+on: [push]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build with Maven
+      uses: LucaFeger/action-maven-cli@765e218a50f02a12a7596dc9e7321fc385888a27
+      with:
+        args: clean install
