@@ -2,7 +2,7 @@ package de.biosphere.promcord.handler.guild;
 
 import io.prometheus.client.Gauge;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
-import net.dv8tion.jda.api.events.guild.member.update.GuildMemberUpdateBoostTimeEvent;
+import net.dv8tion.jda.api.events.guild.update.GuildUpdateBoostCountEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import javax.annotation.Nonnull;
@@ -16,8 +16,8 @@ public class GuildBoostListener extends ListenerAdapter {
     }
 
     @Override
-    public void onGuildMemberUpdateBoostTime(@Nonnull GuildMemberUpdateBoostTimeEvent event) {
-        booster_count.labels(event.getGuild().getId()).set(event.getGuild().getBoostCount());
+    public void onGuildUpdateBoostCount(GuildUpdateBoostCountEvent event) {
+        booster_count.labels(event.getGuild().getId()).set(event.getNewBoostCount());
     }
 
     @Override

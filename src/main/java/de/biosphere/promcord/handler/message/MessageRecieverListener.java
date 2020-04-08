@@ -87,7 +87,7 @@ public class MessageRecieverListener extends ListenerAdapter {
         final Request request = new Request.Builder().url("https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=" + System.getenv("PERSPECTIVE_KEY")).post(requestBody).build();
         try {
             final Response response = okHttpClient.newCall(request).execute();
-            final JsonObject jsonObject = new JsonParser().parse(response.body().string()).getAsJsonObject();
+            final JsonObject jsonObject = JsonParser.parseString(response.body().string()).getAsJsonObject();
             final double value = jsonObject.get("attributeScores").getAsJsonObject().get("TOXICITY_EXPERIMENTAL").getAsJsonObject().get("summaryScore").getAsJsonObject().get("value").getAsDouble();
             toxicityScore.labels(message.getGuild().getId(), message.getChannel().getId(), message.getAuthor().getId()).set(value);
         } catch (IOException exception) {

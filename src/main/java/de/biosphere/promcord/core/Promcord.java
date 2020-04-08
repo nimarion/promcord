@@ -8,9 +8,11 @@ import de.biosphere.promcord.handler.guild.UserOnlineStatusListener;
 import de.biosphere.promcord.handler.message.MessageReactionListener;
 import de.biosphere.promcord.handler.message.MessageRecieverListener;
 import io.prometheus.client.exporter.HTTPServer;
-import net.dv8tion.jda.api.AccountType;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.utils.MemberCachePolicy;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,8 +49,9 @@ public class Promcord {
 
     protected JDA initializeJDA() throws Exception {
         try {
-            final JDABuilder jdaBuilder = new JDABuilder(AccountType.BOT);
-            jdaBuilder.setToken(System.getenv("DISCORD_TOKEN"));
+            final JDABuilder jdaBuilder = JDABuilder.createDefault(System.getenv("DISCORD_TOKEN"));
+            jdaBuilder.setEnabledIntents(GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS));
+            jdaBuilder.setMemberCachePolicy(MemberCachePolicy.ALL);
             jdaBuilder.addEventListeners(
                     new MessageRecieverListener(),
                     new GuildMemberCountChangeListener(),
