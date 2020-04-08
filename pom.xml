@@ -13,7 +13,7 @@
         <repository>
             <id>jcenter</id>
             <name>jcenter-bintray</name>
-            <url>http://jcenter.bintray.com</url>
+            <url>https://jcenter.bintray.com</url>
         </repository>
         <repository>
             <id>jitpack.io</id>
@@ -26,19 +26,19 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.1.0_84</version>
+            <version>4.1.1_127</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.sentry/sentry-logback -->
         <dependency>
             <groupId>io.sentry</groupId>
             <artifactId>sentry-logback</artifactId>
-            <version>1.7.29</version>
+            <version>1.7.30</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.prometheus/simpleclient_httpserver -->
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient_httpserver</artifactId>
-            <version>0.8.0</version>
+            <version>0.8.1</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
         <dependency>
