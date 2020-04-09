@@ -9,7 +9,11 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import okhttp3.*;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -41,7 +45,7 @@ public class MessageRecieverListener extends ListenerAdapter {
                 "    \"de\"\n" +
                 "  ],\n" +
                 "  \"requestedAttributes\": {\n" +
-                "    \"TOXICITY_EXPERIMENTAL\": {}\n" +
+                "    \"TOXICITY\": {}\n" +
                 "  }\n" +
                 "}";
     }
@@ -87,8 +91,8 @@ public class MessageRecieverListener extends ListenerAdapter {
         final Request request = new Request.Builder().url("https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=" + System.getenv("PERSPECTIVE_KEY")).post(requestBody).build();
         try {
             final Response response = okHttpClient.newCall(request).execute();
-            final JsonObject jsonObject = new JsonParser().parse(response.body().string()).getAsJsonObject();
-            final double value = jsonObject.get("attributeScores").getAsJsonObject().get("TOXICITY_EXPERIMENTAL").getAsJsonObject().get("summaryScore").getAsJsonObject().get("value").getAsDouble();
+            final JsonObject jsonObject = JsonParser.parseString(response.body().string()).getAsJsonObject();
+            final double value = jsonObject.get("attributeScores").getAsJsonObject().get("TOXICITY").getAsJsonObject().get("summaryScore").getAsJsonObject().get("value").getAsDouble();
             toxicityScore.labels(message.getGuild().getId(), message.getChannel().getId(), message.getAuthor().getId()).set(value);
         } catch (IOException exception) {
             exception.printStackTrace();

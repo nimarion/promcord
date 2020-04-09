@@ -13,7 +13,6 @@ public class Launcher {
             new Promcord();
         } catch (Exception exception) {
             LoggerFactory.getLogger(Launcher.class).error("Encountered exception while initializing the bot!", exception);
-            System.exit(1);
         }
     }
 
