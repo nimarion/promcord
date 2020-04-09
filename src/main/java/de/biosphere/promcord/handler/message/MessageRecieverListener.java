@@ -45,7 +45,7 @@ public class MessageRecieverListener extends ListenerAdapter {
                 "    \"de\"\n" +
                 "  ],\n" +
                 "  \"requestedAttributes\": {\n" +
-                "    \"TOXICITY_EXPERIMENTAL\": {}\n" +
+                "    \"TOXICITY\": {}\n" +
                 "  }\n" +
                 "}";
     }
@@ -92,7 +92,7 @@ public class MessageRecieverListener extends ListenerAdapter {
         try {
             final Response response = okHttpClient.newCall(request).execute();
             final JsonObject jsonObject = JsonParser.parseString(response.body().string()).getAsJsonObject();
-            final double value = jsonObject.get("attributeScores").getAsJsonObject().get("TOXICITY_EXPERIMENTAL").getAsJsonObject().get("summaryScore").getAsJsonObject().get("value").getAsDouble();
+            final double value = jsonObject.get("attributeScores").getAsJsonObject().get("TOXICITY").getAsJsonObject().get("summaryScore").getAsJsonObject().get("value").getAsDouble();
             toxicityScore.labels(message.getGuild().getId(), message.getChannel().getId(), message.getAuthor().getId()).set(value);
         } catch (IOException exception) {
             exception.printStackTrace();
