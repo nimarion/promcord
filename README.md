@@ -42,25 +42,27 @@ This section provides a high-level requirement & quick start guide. **For detail
 #### Docker Installation 
 
 1. Follow the [Docker CE install guide](https://docs.docker.com/install/) and the [Docker Compose install guide](https://docs.docker.com/compose/install/), which illustrates multiple installation options for each OS.
-1. Set up your environment variables/secrets in `.env` file
+2. Set up your environment variables/secrets in `.env` file
 ```
 DISCORD_TOKEN=<your token>
 ```
-1. Download the [prometheus.yml](prometheus.yml) file to your current directory.
-1. Run the Docker App with `docker-compose up -d`
-1. That's it! Go to [http://your-ip:80](http://localhost:80) to access Grafana. Then follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server. 
+3. Download the [prometheus.yml](prometheus.yml) file to your current directory.
+4. Run the Docker App with `docker-compose up -d`
+5. That's it! Go to [http://your-ip:80](http://localhost:80) to access Grafana. Then follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server. 
+6. To simplify the creation of Grafana Dashboards, you can download a ready-made dashboard [here](grafana.json) to [import it into Grafana](https://grafana.com/docs/grafana/latest/reference/export_import/)
 
 ### Developer Installation
 
 1. Make sure all the prerequisites are installed.
-1. Fork promcord repository, ie. https://github.com/Biospheere/promcord/fork
-1. Clone your forked repository, ie. `git clone https://github.com/<your-username>/promcord.git`
-1. Set up your environment variables/secrets
+2. Fork promcord repository, ie. https://github.com/Biospheere/promcord/fork
+3. Clone your forked repository, ie. `git clone https://github.com/<your-username>/promcord.git`
+4. Set up your environment variables/secrets
 ```
 DISCORD_TOKEN=<your token>
 ```
-1. Use [prometheus.yml](prometheus.yml) for Prometheus (Edit target hostname!)
-1. That's it! Go to [http://your-ip:grafana-port](http://localhost:3000) to access Grafana. Then follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server. 
+5. Use [prometheus.yml](prometheus.yml) for Prometheus (Edit target hostname!)
+6. That's it! Go to [http://your-ip:grafana-port](http://localhost:3000) to access Grafana. Then follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server. 
+7. To simplify the creation of Grafana Dashboards, you can download a ready-made dashboard [here](grafana.json) to [import it into Grafana](https://grafana.com/docs/grafana/latest/reference/export_import/)
 
 ## Collected data
 
