@@ -1,6 +1,5 @@
 package de.biosphere.promcord;
 
-import de.biosphere.promcord.core.Promcord;
 import io.prometheus.client.Collector;
 
 import java.util.ArrayList;

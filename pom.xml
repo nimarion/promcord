@@ -100,12 +100,11 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>de.biosphere.promcord.core.Launcher</mainClass>
+                            <mainClass>de.biosphere.promcord.Launcher</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
