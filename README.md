@@ -9,6 +9,9 @@
 
 Promcord is a Discord bot which provides metrics from a Discord server to create insight and alerting on actions and messages. Using [Grafana](https://grafana.com/) you can easily visualize all your metrics in beautiful dashboards.
 
+![Grafana Gif](https://i.imgur.com/9JJQ2E6.gif)
+
+
 ## Table of Contents
 
   - [Contributing](#contributing)
