@@ -1,6 +1,5 @@
-package de.biosphere.promcord.core;
+package de.biosphere.promcord;
 
-import de.biosphere.promcord.StatisticsHandlerCollector;
 import de.biosphere.promcord.handler.guild.GuildBoostListener;
 import de.biosphere.promcord.handler.guild.GuildMemberCountChangeListener;
 import de.biosphere.promcord.handler.guild.UserGameListener;
@@ -9,6 +8,7 @@ import de.biosphere.promcord.handler.message.MessageReactionListener;
 import de.biosphere.promcord.handler.message.MessageRecieverListener;
 import de.biosphere.promcord.handler.voice.VoiceChannelListener;
 import io.prometheus.client.exporter.HTTPServer;
+import io.sentry.Sentry;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -18,7 +18,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
-
 
 public class Promcord {
 
@@ -82,5 +81,16 @@ public class Promcord {
 
     public JDA getJDA() {
         return jda;
+    }
+
+    public static void main(String... args) {
+        if (System.getenv("SENTRY_DSN") != null || System.getProperty("sentry.properties") != null) {
+            Sentry.init();
+        }
+        try {
+            new Promcord();
+        } catch (Exception exception) {
+            logger.error("Encountered exception while initializing the bot!", exception);
+        }
     }
 }

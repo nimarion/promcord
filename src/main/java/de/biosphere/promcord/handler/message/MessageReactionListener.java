@@ -16,7 +16,7 @@ public class MessageReactionListener extends ListenerAdapter {
 
     @Override
     public void onGuildMessageReactionAdd(GuildMessageReactionAddEvent event) {
-        if(event.getUser().isBot()){
+        if (event.getUser().isBot() && (System.getenv("IGNORE_BOTS") == null || System.getenv("IGNORE_BOTS").equalsIgnoreCase("true"))) {
             return;
         }
         final String emote = getReaction(event.getReactionEmote());

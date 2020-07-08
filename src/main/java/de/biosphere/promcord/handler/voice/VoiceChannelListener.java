@@ -37,6 +37,7 @@ public class VoiceChannelListener extends ListenerAdapter {
             final Long time = (System.currentTimeMillis() - voiceMap.get(event.getMember().getId())) / 1000;
             voice_count.labels(event.getGuild().getId(), event.getChannelLeft().getId(), event.getMember().getId())
                     .set(time);
+            voiceMap.remove(event.getMember().getId());
         }
     }
 

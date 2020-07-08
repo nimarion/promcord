@@ -16,17 +16,17 @@ public class GuildMemberCountChangeListener extends ListenerAdapter {
 
     @Override
     public void onGuildMemberJoin(GuildMemberJoinEvent event) {
-        member_count.labels(event.getGuild().getId()).set(event.getGuild().getMembers().size());
+        member_count.labels(event.getGuild().getId()).set(event.getGuild().getMemberCount());
     }
 
     @Override
     public void onGuildMemberRemove(GuildMemberRemoveEvent event) {
-        member_count.labels(event.getGuild().getId()).set(event.getGuild().getMembers().size());
+        member_count.labels(event.getGuild().getId()).set(event.getGuild().getMemberCount());
     }
 
     @Override
     public void onGuildReady(GuildReadyEvent event) {
-        member_count.labels(event.getGuild().getId()).set(event.getGuild().getMembers().size());
+        member_count.labels(event.getGuild().getId()).set(event.getGuild().getMemberCount());
     }
 
 }
