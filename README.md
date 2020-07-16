@@ -1,6 +1,5 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9b76ad18252a4b9c80b40f4115e98a76)](https://www.codacy.com/app/biosphere.dev/promcord?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Biospheere/promcord&amp;utm_campaign=Badge_Grade)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2dc5b8633bc6519fc64b/maintainability)](https://codeclimate.com/github/Biospheere/promcord/maintainability)
 [![Build Status](https://github.com/biospheere/promcord/workflows/Build/badge.svg?branch=master)](https://github.com/biospheere/promcord/actions)
-[![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=Biospheere/c0debaseBot)](https://dependabot.com/)
 [![GitHub contributors](https://img.shields.io/github/contributors/biospheere/promcord.svg)](https://github.com/Biospheere/promcord/graphs/contributors/)
 
 # promcord
