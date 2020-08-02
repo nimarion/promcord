@@ -17,8 +17,6 @@ import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Optional;
-
 public class Promcord {
 
     private static final Logger logger = LoggerFactory.getLogger(Promcord.class);
@@ -32,7 +30,8 @@ public class Promcord {
         jda = initializeJDA();
         logger.info("JDA set up!");
 
-        final HTTPServer prometheusServer = new HTTPServer(getHttpPort().orElse(8080));
+        final HTTPServer prometheusServer = new HTTPServer(
+                Configuration.HTTP_PORT == null ? 8080 : Integer.parseInt(Configuration.HTTP_PORT));
 
         new StatisticsHandlerCollector(this).register();
 
@@ -47,35 +46,18 @@ public class Promcord {
         logger.info(String.format("Startup finished in %dms!", System.currentTimeMillis() - startTime));
     }
 
-    protected JDA initializeJDA() throws Exception {
+    private JDA initializeJDA() throws Exception {
         try {
-            final JDABuilder jdaBuilder = JDABuilder.createDefault(System.getenv("DISCORD_TOKEN"));
+            final JDABuilder jdaBuilder = JDABuilder.createDefault(Configuration.DISCORD_TOKEN);
             jdaBuilder.setEnabledIntents(GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS));
             jdaBuilder.setMemberCachePolicy(MemberCachePolicy.ALL);
-            jdaBuilder.addEventListeners(
-                    new MessageRecieverListener(),
-                    new GuildMemberCountChangeListener(),
-                    new UserOnlineStatusListener(),
-                    new UserGameListener(),
-                    new MessageReactionListener(),
-                    new GuildBoostListener(),
-                    new VoiceChannelListener());
+            jdaBuilder.addEventListeners(new MessageRecieverListener(), new GuildMemberCountChangeListener(),
+                    new UserOnlineStatusListener(), new UserGameListener(), new MessageReactionListener(),
+                    new GuildBoostListener(), new VoiceChannelListener());
             return jdaBuilder.build().awaitReady();
         } catch (Exception exception) {
-            logger.error("Encountered exception while initializing ShardManager!");
+            logger.error("Encountered exception while initializing JDA!");
             throw exception;
-        }
-    }
-
-    private Optional<Integer> getHttpPort() {
-        final String port = System.getenv("HTTP_PORT");
-        if (port == null)
-            return Optional.empty();
-        try {
-            return Optional.of(Integer.parseInt(port));
-        } catch (NumberFormatException ignored) {
-            logger.warn("HTTP_PORT should be a valid number, using 8080 as fallback");
-            return Optional.empty();
         }
     }
 
