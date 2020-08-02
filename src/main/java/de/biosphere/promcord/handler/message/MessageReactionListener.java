@@ -10,18 +10,21 @@ public class MessageReactionListener extends ListenerAdapter {
 
     private final Counter reaction_count;
 
-    public MessageReactionListener(){
-        reaction_count = Counter.build().name("reaction_count").help("Count of reactions").labelNames("guild", "channel", "user", "emote").register();
+    public MessageReactionListener() {
+        reaction_count = Counter.build().name("reaction_count").help("Count of reactions")
+                .labelNames("guild", "channel", "user", "emote").register();
     }
 
     @Override
     public void onGuildMessageReactionAdd(GuildMessageReactionAddEvent event) {
-        if (event.getUser().isBot() && (System.getenv("IGNORE_BOTS") == null || System.getenv("IGNORE_BOTS").equalsIgnoreCase("true"))) {
+        if (event.getUser().isBot()
+                && (System.getenv("IGNORE_BOTS") == null || System.getenv("IGNORE_BOTS").equalsIgnoreCase("true"))) {
             return;
         }
         final String emote = getReaction(event.getReactionEmote());
-        if(emote != null){
-            reaction_count.labels(event.getGuild().getId(), event.getChannel().getId(), event.getUser().getId(), emote).inc();
+        if (emote != null) {
+            reaction_count.labels(event.getGuild().getId(), event.getChannel().getId(), event.getUser().getId(), emote)
+                    .inc();
         }
     }
 

@@ -35,9 +35,10 @@ public class Configuration {
     }
 
     private static void checkNull() throws IllegalAccessException {
-        for (Field f : Configuration.class.getDeclaredFields()){
-            LoggerFactory.getLogger(Configuration.class).debug(f.getName() + " environment variable " + (f.get(Configuration.class) == null ? "is null" : "has been loaded"));
-        }           
+        for (Field f : Configuration.class.getDeclaredFields()) {
+            LoggerFactory.getLogger(Configuration.class).debug(f.getName() + " environment variable "
+                    + (f.get(Configuration.class) == null ? "is null" : "has been loaded"));
+        }
     }
-    
+
 }

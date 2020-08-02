@@ -30,7 +30,8 @@ public class Promcord {
         jda = initializeJDA();
         logger.info("JDA set up!");
 
-        final HTTPServer prometheusServer = new HTTPServer(Configuration.HTTP_PORT == null ? 8080 : Integer.parseInt(Configuration.HTTP_PORT));
+        final HTTPServer prometheusServer = new HTTPServer(
+                Configuration.HTTP_PORT == null ? 8080 : Integer.parseInt(Configuration.HTTP_PORT));
 
         new StatisticsHandlerCollector(this).register();
 
@@ -50,14 +51,9 @@ public class Promcord {
             final JDABuilder jdaBuilder = JDABuilder.createDefault(Configuration.DISCORD_TOKEN);
             jdaBuilder.setEnabledIntents(GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS));
             jdaBuilder.setMemberCachePolicy(MemberCachePolicy.ALL);
-            jdaBuilder.addEventListeners(
-                    new MessageRecieverListener(),
-                    new GuildMemberCountChangeListener(),
-                    new UserOnlineStatusListener(),
-                    new UserGameListener(),
-                    new MessageReactionListener(),
-                    new GuildBoostListener(),
-                    new VoiceChannelListener());
+            jdaBuilder.addEventListeners(new MessageRecieverListener(), new GuildMemberCountChangeListener(),
+                    new UserOnlineStatusListener(), new UserGameListener(), new MessageReactionListener(),
+                    new GuildBoostListener(), new VoiceChannelListener());
             return jdaBuilder.build().awaitReady();
         } catch (Exception exception) {
             logger.error("Encountered exception while initializing JDA!");
