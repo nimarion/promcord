@@ -20,8 +20,6 @@ services:
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
       - '--storage.tsdb.retention.time=200h'
-    ports:
-      - 9090:9090
   grafana:
     image: "grafana/grafana"
     restart: always
@@ -29,6 +27,10 @@ services:
       - grafana_data:/var/lib/grafana
     ports:
       - 80:3000
+    depends_on:
+      - prometheus
+    links:
+      - prometheus
 
 volumes:
   prometheus:
