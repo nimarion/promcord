@@ -20,8 +20,6 @@ services:
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
       - '--storage.tsdb.retention.time=200h'
-    expose:
-      - 9090
   grafana:
     image: "grafana/grafana"
     restart: always
