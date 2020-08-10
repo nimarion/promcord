@@ -16,7 +16,7 @@ Promcord is a Discord bot which provides metrics from a Discord server to create
   - [Contributing](#contributing)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
-    - [Docker Installation ](#docker-installation)
+    - [Docker Installation ](#docker-installation-local-install)
     - [Developer Installation ](#developer-installation)
   - [Collected data](#collected-data)
   - [Screenshots](#screenshots)
