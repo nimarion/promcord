@@ -52,8 +52,8 @@ public class Promcord {
             jdaBuilder.setEnabledIntents(GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS));
             jdaBuilder.setMemberCachePolicy(MemberCachePolicy.ALL);
             jdaBuilder.addEventListeners(new MessageRecieverListener(), new GuildMemberCountChangeListener(),
-                    new UserOnlineStatusListener(), new UserGameListener(), new MessageReactionListener(),
-                    new GuildBoostListener(), new VoiceChannelListener());
+                    new UserOnlineStatusListener(), new MessageReactionListener(), new GuildBoostListener(),
+                    new VoiceChannelListener());
             return jdaBuilder.build().awaitReady();
         } catch (Exception exception) {
             logger.error("Encountered exception while initializing JDA!");
