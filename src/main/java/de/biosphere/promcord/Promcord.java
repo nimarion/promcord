@@ -2,7 +2,6 @@ package de.biosphere.promcord;
 
 import de.biosphere.promcord.handler.guild.GuildBoostListener;
 import de.biosphere.promcord.handler.guild.GuildMemberCountChangeListener;
-import de.biosphere.promcord.handler.guild.UserGameListener;
 import de.biosphere.promcord.handler.guild.UserOnlineStatusListener;
 import de.biosphere.promcord.handler.message.MessageReactionListener;
 import de.biosphere.promcord.handler.message.MessageRecieverListener;
