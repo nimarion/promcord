@@ -2,7 +2,6 @@ package de.biosphere.promcord;
 
 import de.biosphere.promcord.handler.guild.GuildBoostListener;
 import de.biosphere.promcord.handler.guild.GuildMemberCountChangeListener;
-import de.biosphere.promcord.handler.guild.UserGameListener;
 import de.biosphere.promcord.handler.guild.UserOnlineStatusListener;
 import de.biosphere.promcord.handler.message.MessageReactionListener;
 import de.biosphere.promcord.handler.message.MessageRecieverListener;
@@ -52,8 +51,8 @@ public class Promcord {
             jdaBuilder.setEnabledIntents(GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS));
             jdaBuilder.setMemberCachePolicy(MemberCachePolicy.ALL);
             jdaBuilder.addEventListeners(new MessageRecieverListener(), new GuildMemberCountChangeListener(),
-                    new UserOnlineStatusListener(), new UserGameListener(), new MessageReactionListener(),
-                    new GuildBoostListener(), new VoiceChannelListener());
+                    new UserOnlineStatusListener(), new MessageReactionListener(), new GuildBoostListener(),
+                    new VoiceChannelListener());
             return jdaBuilder.build().awaitReady();
         } catch (Exception exception) {
             logger.error("Encountered exception while initializing JDA!");
