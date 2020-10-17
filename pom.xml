@@ -26,7 +26,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.2.0_174</version>
+            <version>4.2.0_191</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.sentry/sentry-logback -->
         <dependency>
@@ -56,7 +56,7 @@
          <dependency>
             <groupId>io.github.cdimascio</groupId>
             <artifactId>java-dotenv</artifactId>
-            <version>5.2.1</version>
+            <version>5.3.1</version>
         </dependency>
     </dependencies>
 
@@ -97,7 +97,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.0</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
