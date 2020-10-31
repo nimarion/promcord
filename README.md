@@ -49,9 +49,10 @@ This section provides a high-level requirement & quick start guide. **For detail
 DISCORD_TOKEN=<your token>
 ```
 3. Download the [prometheus.yml](prometheus.yml) file to your current directory.
-4. Run the Docker App with `docker-compose up -d`
-5. Navigate to http://localhost:80 to access Grafana. Follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server. You will need to add Prometheus as your datasource. For the Prometheus datasource settings, use `http://localhost:9090` as the URL and `Browser` as the Access.
-6. That's it! To simplify the creation of Grafana Dashboards, you can download a ready-made dashboard [here](grafana.json) to [import it into Grafana](https://grafana.com/docs/grafana/latest/reference/export_import/)
+4. Rename the `docker-compose.yml.localsample` to `docker-compose.yml`.
+5. Run the Docker App with `docker-compose up -d`.
+6. Navigate to http://localhost:80 to access Grafana. Follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server. Prometheus will be added as a datasource in Grafana automatically.
+7. That's it! To simplify the creation of Grafana Dashboards, you can download a ready-made dashboard [here](grafana.json) to [import it into Grafana](https://grafana.com/docs/grafana/latest/reference/export_import/)
 
 #### Docker Installation (production install)
 
@@ -62,11 +63,12 @@ DISCORD_TOKEN=<your token>
 ```
 3. Modify the provisioning/datasources/automatic.yml file and change the `access` value to `proxy` AND change the `url` value to `http://prometheus:9090`.
 4. Download the [prometheus.yml](prometheus.yml) file to your current directory.
-5. Rename docker-compose.yml.sample to docker-compose.yml (The .sample compose file will contain links in order for Grafana and Prometheus to talk to each other)
-6. Run the Docker App with `docker-compose up -d`
-7. Navigate to http://ip_address:80 to access Grafana. Follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server - you will need to add Prometheus as your datasource. For the Prometheus datasource settings, use `http://prometheus:9090` as the URL and `Server` as the Access.
-8. That's it! To simplify the creation of Grafana Dashboards, you can download a ready-made dashboard [here](grafana.json) to [import it into Grafana](https://grafana.com/docs/grafana/latest/reference/export_import/)
-8. It is recommended you use Nginx and [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) to the Grafana instance for production use. Simply change docker-compose.yml Grafana ports from `80:3000` to `3000:3000`, then reverse proxy to http://localhost:3000 in the Nginx configuration. 
+5. Rename the `docker-compose.yml.prodsample` to `docker-compose.yml`.
+6. Rename docker-compose.yml.sample to docker-compose.yml (The .sample compose file will contain links in order for Grafana and Prometheus to talk to each other)
+7. Run the Docker App with `docker-compose up -d`
+8. Navigate to http://ip_address:80 to access Grafana. Follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server. Prometheus will be added as a datasource in Grafana automatically.
+9. That's it! To simplify the creation of Grafana Dashboards, you can download a ready-made dashboard [here](grafana.json) to [import it into Grafana](https://grafana.com/docs/grafana/latest/reference/export_import/)
+10. It is recommended you use Nginx and [reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) to the Grafana instance for production use. Simply change docker-compose.yml Grafana ports from `80:3000` to `3000:3000`, then reverse proxy to http://localhost:3000 in the Nginx configuration. 
 
 ### Developer Installation
 
@@ -78,8 +80,9 @@ DISCORD_TOKEN=<your token>
 DISCORD_TOKEN=<your token>
 ```
 5. Use [prometheus.yml](prometheus.yml) for Prometheus (Edit target hostname!)
-6. That's it! Go to [http://your-ip:grafana-port](http://localhost:3000) to access Grafana. Then follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server. 
-7. To simplify the creation of Grafana Dashboards, you can download a ready-made dashboard [here](grafana.json) to [import it into Grafana](https://grafana.com/docs/grafana/latest/reference/export_import/)
+6. Rename the `docker-compose.yml.localsample` to `docker-compose.yml`.
+7. That's it! Go to [http://your-ip:grafana-port](http://localhost:3000) to access Grafana. Then follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server. 
+8. To simplify the creation of Grafana Dashboards, you can download a ready-made dashboard [here](grafana.json) to [import it into Grafana](https://grafana.com/docs/grafana/latest/reference/export_import/)
 
 ## Collected data
 
