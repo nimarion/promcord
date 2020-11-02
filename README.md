@@ -52,7 +52,7 @@ DISCORD_TOKEN=<your token>
 4. Rename the `docker-compose.yml.localsample` to `docker-compose.yml`.
 5. Run the Docker App with `docker-compose up -d`.
 6. Navigate to http://localhost:80 to access Grafana. Follow [this](https://grafana.com/docs/guides/getting_started/) guide to configure your Grafana server. Prometheus will be added as a datasource in Grafana automatically.
-7. That's it! To simplify the creation of Grafana Dashboards, one has been added to Grafana automatically; however, you can remove it by removing the `/.provisioning/dashboards/grafana.json` file.
+7. That's it! To simplify the creation of Grafana Dashboards, one has been added to Grafana automatically; however, you can remove it by removing the `./provisioning/dashboards/grafana.json` file.
 
 #### Docker Installation (production install)
 
