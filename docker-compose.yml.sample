@@ -7,6 +7,8 @@ services:
     container_name: "promcord"
     expose:
       - 8080
+    networks:
+      - promcord-net
   prometheus:
     image: "prom/prometheus"
     restart: always
@@ -20,6 +22,8 @@ services:
       - '--web.console.libraries=/usr/share/prometheus/console_libraries'
       - '--web.console.templates=/usr/share/prometheus/consoles'
       - '--storage.tsdb.retention.time=200h'
+    networks:
+      - promcord-net
   grafana:
     image: "grafana/grafana"
     restart: always
@@ -30,9 +34,12 @@ services:
       - 80:3000
     depends_on:
       - prometheus
-    links:
-      - prometheus
+    networks:
+      - promcord-net
 
 volumes:
   prometheus:
   grafana_data:
+
+networks:
+  promcord-net:
