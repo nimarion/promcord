@@ -4,7 +4,7 @@ datasources:
 - name: Prometheus
   type: prometheus
   url: http://prometheus:9090
-  access: direct
+  access: proxy
   password:
   user:
   database: Prometheus
