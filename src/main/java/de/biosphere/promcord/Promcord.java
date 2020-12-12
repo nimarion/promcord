@@ -4,7 +4,7 @@ import de.biosphere.promcord.handler.guild.GuildBoostListener;
 import de.biosphere.promcord.handler.guild.GuildMemberCountChangeListener;
 import de.biosphere.promcord.handler.guild.UserOnlineStatusListener;
 import de.biosphere.promcord.handler.message.MessageReactionListener;
-import de.biosphere.promcord.handler.message.MessageRecieverListener;
+import de.biosphere.promcord.handler.message.MessageReceiverListener;
 import de.biosphere.promcord.handler.voice.VoiceChannelListener;
 import io.prometheus.client.exporter.HTTPServer;
 import io.sentry.Sentry;
@@ -50,7 +50,7 @@ public class Promcord {
             final JDABuilder jdaBuilder = JDABuilder.createDefault(Configuration.DISCORD_TOKEN);
             jdaBuilder.setEnabledIntents(GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS));
             jdaBuilder.setMemberCachePolicy(MemberCachePolicy.ALL);
-            jdaBuilder.addEventListeners(new MessageRecieverListener(), new GuildMemberCountChangeListener(),
+            jdaBuilder.addEventListeners(new MessageReceiverListener(), new GuildMemberCountChangeListener(),
                     new UserOnlineStatusListener(), new MessageReactionListener(), new GuildBoostListener(),
                     new VoiceChannelListener());
             return jdaBuilder.build().awaitReady();
