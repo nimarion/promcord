@@ -17,7 +17,7 @@ import okhttp3.Response;
 
 import java.io.IOException;
 
-public class MessageRecieverListener extends ListenerAdapter {
+public class MessageReceiverListener extends ListenerAdapter {
 
     private final OkHttpClient okHttpClient = new OkHttpClient();
     private final Counter msg_count;
@@ -27,7 +27,7 @@ public class MessageRecieverListener extends ListenerAdapter {
     private final Gauge toxicityScore;
     private final String perspectivePayload;
 
-    public MessageRecieverListener() {
+    public MessageReceiverListener() {
         String[] tags = { "guild", "channel", "user" };
         msg_count = Counter.build().name("msg_count").help("Count of messages").labelNames(tags).register();
         msg_emote_count = Counter.build().name("msg_emote_count").help("Count of emotes in messages")
