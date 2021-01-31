@@ -1098,7 +1098,9 @@
   "refresh": "10s",
   "schemaVersion": 26,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "promcord"
+  ],
   "templating": {
     "list": [
       {
