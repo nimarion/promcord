@@ -1,0 +1,18 @@
+{
+    "name": "promcord - devcontainer",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "."
+    },
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/zsh",
+        "java.home": "/usr/local/openjdk-15",
+        "maven.executable.path": "/usr/local/sdkman/candidates/maven/current/bin/mvn"
+    },
+    "extensions": [
+        "vscjava.vscode-java-pack"
+    ],
+    "forwardPorts": [
+        8080,
+    ]
+}
