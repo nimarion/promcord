@@ -16,6 +16,7 @@ Promcord is a Discord bot which provides metrics from a Discord server to create
   - [Contributing](#contributing)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
+    - [Kubernetes Deployment](#kubernetes-deployment-helm)
     - [Docker Installation ](#docker-installation-local-install)
     - [Developer Installation ](#developer-installation)
   - [Collected data](#collected-data)
@@ -40,6 +41,11 @@ This section provides a high-level requirement & quick start guide. **For detail
 - [Maven](https://maven.apache.org/)
 - [Prometheus](https://prometheus.io/)
 - [Grafana](https://grafana.com/)
+
+### Kubernetes Deployment (Helm)
+
+Thanks to [ChipWolf](https://github.com/ChipWolf), there is a Helm chart for a simple Kubernetes deployment.
+[https://github.com/k8s-at-home/charts/tree/master/charts/stable/promcord](https://github.com/k8s-at-home/charts/tree/master/charts/stable/promcord)
 
 #### Docker Installation (local install)
 
