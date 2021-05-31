@@ -38,7 +38,7 @@
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient_httpserver</artifactId>
-            <version>0.9.0</version>
+            <version>0.11.0</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.vdurmont/emoji-java -->
         <dependency>
