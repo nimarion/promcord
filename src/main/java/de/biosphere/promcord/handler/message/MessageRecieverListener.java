@@ -28,10 +28,10 @@ public class MessageRecieverListener extends ListenerAdapter {
     private final String perspectivePayload;
 
     public MessageRecieverListener() {
-        String[] tags = { "guild", "channel", "user" };
+        String[] tags = { "guild", "channel", "channelName", "user", "name" };
         msg_count = Counter.build().name("msg_count").help("Count of messages").labelNames(tags).register();
         msg_emote_count = Counter.build().name("msg_emote_count").help("Count of emotes in messages")
-                .labelNames("guild", "channel", "user", "emote").register();
+                .labelNames("guild", "channel", "channelName", "user", "name", "emote").register();
         msg_length = Gauge.build().name("msg_length").help("Length of messages").labelNames(tags).register();
         msg_word_count = Gauge.build().name("msg_word_count").help("Count of words in messages").labelNames(tags)
                 .register();
@@ -57,7 +57,7 @@ public class MessageRecieverListener extends ListenerAdapter {
         recordMessageWordCount(channel, user, event.getMessage().getContentDisplay().split(" ").length);
 
         event.getMessage().getEmotesBag().forEach(emote -> {
-            msg_emote_count.labels(channel.getGuild().getId(), channel.getId(), user.getId(), emote.getName()).inc();
+            msg_emote_count.labels(channel.getGuild().getId(), channel.getId(), channel.getName(), user.getId(), user.getName(), emote.getName()).inc();
         });
 
         if (System.getenv("PERSPECTIVE_KEY") != null) {
@@ -66,15 +66,15 @@ public class MessageRecieverListener extends ListenerAdapter {
     }
 
     private void recordMessageWordCount(final TextChannel channel, final User user, final int length) {
-        msg_word_count.labels(channel.getGuild().getId(), channel.getId(), user.getId()).set(length);
+        msg_word_count.labels(channel.getGuild().getId(), channel.getId(), channel.getName(),user.getId(), user.getName()).set(length);
     }
 
     private void recordMessageLength(final TextChannel channel, final User user, final int length) {
-        msg_length.labels(channel.getGuild().getId(), channel.getId(), user.getId()).set(length);
+        msg_length.labels(channel.getGuild().getId(), channel.getId(), channel.getName(), user.getId(), user.getName()).set(length);
     }
 
     private void recordMessageCount(final TextChannel channel, final User user) {
-        msg_count.labels(channel.getGuild().getId(), channel.getId(), user.getId()).inc();
+        msg_count.labels(channel.getGuild().getId(), channel.getId(), channel.getName(), user.getId(), user.getName()).inc();
     }
 
     private void recordToxicityScore(final Message message) {

@@ -12,7 +12,7 @@ public class MessageReactionListener extends ListenerAdapter {
 
     public MessageReactionListener() {
         reaction_count = Counter.build().name("reaction_count").help("Count of reactions")
-                .labelNames("guild", "channel", "user", "emote").register();
+                .labelNames("guild", "channel", "channelName", "user", "name", "emote").register();
     }
 
     @Override
@@ -23,7 +23,7 @@ public class MessageReactionListener extends ListenerAdapter {
         }
         final String emote = getReaction(event.getReactionEmote());
         if (emote != null) {
-            reaction_count.labels(event.getGuild().getId(), event.getChannel().getId(), event.getUser().getId(), emote)
+            reaction_count.labels(event.getGuild().getId(), event.getChannel().getId(), event.getChannel().getName(), event.getUser().getId(), event.getUser().getName(), emote)
                     .inc();
         }
     }
