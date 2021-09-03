@@ -10,12 +10,14 @@ public class Configuration {
 
     public static final String HTTP_PORT;
     public static final String DISCORD_TOKEN;
+    public static final String TRACK_NAMES;
 
     static {
         final Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
 
         HTTP_PORT = getenv("HTTP_PORT", dotenv);
         DISCORD_TOKEN = getenv("DISCORD_TOKEN", dotenv);
+        TRACK_NAMES = getenv("TRACK_NAMES", dotenv);
 
         try {
             checkNull();
