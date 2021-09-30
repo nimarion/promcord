@@ -3,6 +3,7 @@ package de.biosphere.promcord.handler.voice;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.biosphere.promcord.Configuration;
 import io.prometheus.client.Gauge;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.VoiceChannel;
@@ -21,12 +22,12 @@ public class VoiceChannelListener extends ListenerAdapter {
     private final Map<String, Long> streamMap;
 
     public VoiceChannelListener() {
-        voice_time = Gauge.build().name("voice_time").help("Time spent in a voice channel")
-                .labelNames("guild", "channel", "user").register();
-        stream_count = Gauge.build().name("stream_time").help("Time spent streaming").labelNames("guild", "user")
-                .register();
-        voice_count = Gauge.build().name("voice_count").help("Current number of members in voice channel")
-                .labelNames("guild", "channel").register();
+        voice_time = Gauge.build().name(Configuration.PROMCORD_PREFIX + "voice_time")
+                .help("Time spent in a voice channel").labelNames("guild", "channel", "user").register();
+        stream_count = Gauge.build().name(Configuration.PROMCORD_PREFIX + "stream_time").help("Time spent streaming")
+                .labelNames("guild", "user").register();
+        voice_count = Gauge.build().name(Configuration.PROMCORD_PREFIX + "voice_count")
+                .help("Current number of members in voice channel").labelNames("guild", "channel").register();
         voiceMap = new HashMap<>();
         streamMap = new HashMap<>();
     }

@@ -36,7 +36,7 @@ public class Promcord {
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
-                prometheusServer.stop();
+                prometheusServer.close();
             } catch (final Exception exception) {
                 exception.printStackTrace();
             }

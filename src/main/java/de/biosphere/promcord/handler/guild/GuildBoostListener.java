@@ -7,12 +7,15 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import javax.annotation.Nonnull;
 
+import de.biosphere.promcord.Configuration;
+
 public class GuildBoostListener extends ListenerAdapter {
 
     private final Gauge booster_count;
 
     public GuildBoostListener() {
-        booster_count = Gauge.build().name("booster_count").help("Count of boosters").labelNames("guild").register();
+        booster_count = Gauge.build().name(Configuration.PROMCORD_PREFIX + "booster_count").help("Count of boosters")
+                .labelNames("guild").register();
     }
 
     @Override

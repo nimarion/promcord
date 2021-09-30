@@ -1,5 +1,6 @@
 package de.biosphere.promcord.handler.guild;
 
+import de.biosphere.promcord.Configuration;
 import io.prometheus.client.Gauge;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
@@ -11,8 +12,8 @@ public class UserOnlineStatusListener extends ListenerAdapter {
     private final Gauge member_online;
 
     public UserOnlineStatusListener() {
-        member_online = Gauge.build().name("member_online").help("Count of online members").labelNames("guild")
-                .register();
+        member_online = Gauge.build().name(Configuration.PROMCORD_PREFIX + "member_online")
+                .help("Count of online members").labelNames("guild").register();
     }
 
     @Override

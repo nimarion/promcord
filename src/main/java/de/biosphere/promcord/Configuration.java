@@ -11,6 +11,7 @@ public class Configuration {
     public static final String HTTP_PORT;
     public static final String DISCORD_TOKEN;
     public static final String TRACK_NAMES;
+    public static final String PROMCORD_PREFIX;
 
     static {
         final Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
@@ -18,6 +19,7 @@ public class Configuration {
         HTTP_PORT = getenv("HTTP_PORT", dotenv);
         DISCORD_TOKEN = getenv("DISCORD_TOKEN", dotenv);
         TRACK_NAMES = getenv("TRACK_NAMES", dotenv);
+        PROMCORD_PREFIX = getenv("PROMCORD_PREFIX", "", dotenv);
 
         try {
             checkNull();
@@ -34,6 +36,11 @@ public class Configuration {
             return dotenv.get(name);
         }
         return null;
+    }
+
+    private static String getenv(final String name, final String defaultValue, final Dotenv dotenv) {
+        String value = getenv(name, dotenv);
+        return value == null ? defaultValue : value;
     }
 
     private static void checkNull() throws IllegalAccessException {
