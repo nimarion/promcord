@@ -1,5 +1,6 @@
 package de.biosphere.promcord.handler.guild;
 
+import de.biosphere.promcord.Configuration;
 import io.prometheus.client.Gauge;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
@@ -13,8 +14,10 @@ public class GuildMemberCountChangeListener extends ListenerAdapter {
     private final Gauge bot_count;
 
     public GuildMemberCountChangeListener() {
-        member_count = Gauge.build().name("member_count").help("Count of members").labelNames("guild").register();
-        bot_count = Gauge.build().name("bot_count").help("Count of bots").labelNames("guild").register();
+        member_count = Gauge.build().name(Configuration.PROMCORD_PREFIX + "member_count").help("Count of members")
+                .labelNames("guild").register();
+        bot_count = Gauge.build().name(Configuration.PROMCORD_PREFIX + "bot_count").help("Count of bots")
+                .labelNames("guild").register();
     }
 
     @Override

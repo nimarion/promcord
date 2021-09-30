@@ -34,18 +34,19 @@ public class MessageReceiverListener extends ListenerAdapter {
         String[] tags_default = { "guild", "channel", "user" };
         String[] tags_names = { "guild", "channel", "channelName", "user", "name" };
         track_names = (Configuration.TRACK_NAMES != null && Configuration.TRACK_NAMES.equalsIgnoreCase("true"));
-        msg_count = Counter.build().name("msg_count").help("Count of messages")
+        msg_count = Counter.build().name(Configuration.PROMCORD_PREFIX + "msg_count").help("Count of messages")
                 .labelNames(track_names ? tags_names : tags_default).register();
-        msg_emote_count = Counter.build().name("msg_emote_count").help("Count of emotes in messages")
+        msg_emote_count = Counter.build().name(Configuration.PROMCORD_PREFIX + "msg_emote_count")
+                .help("Count of emotes in messages")
                 .labelNames(track_names ? new String[] { "guild", "channel", "channelName", "user", "name", "emote" }
                         : new String[] { "guild", "channel", "user", "emote" })
                 .register();
-        msg_length = Gauge.build().name("msg_length").help("Length of messages")
+        msg_length = Gauge.build().name(Configuration.PROMCORD_PREFIX + "msg_length").help("Length of messages")
                 .labelNames(track_names ? tags_names : tags_default).register();
-        msg_word_count = Gauge.build().name("msg_word_count").help("Count of words in messages")
-                .labelNames(track_names ? tags_names : tags_default).register();
-        toxicityScore = Gauge.build().name("toxicity_score").help("ToxicityScore of a message")
-                .labelNames(track_names ? tags_names : tags_default).register();
+        msg_word_count = Gauge.build().name(Configuration.PROMCORD_PREFIX + "msg_word_count")
+                .help("Count of words in messages").labelNames(track_names ? tags_names : tags_default).register();
+        toxicityScore = Gauge.build().name(Configuration.PROMCORD_PREFIX + "toxicity_score")
+                .help("ToxicityScore of a message").labelNames(track_names ? tags_names : tags_default).register();
         perspectivePayload = "{\n" + "  \"comment\": {\n" + "    \"text\": \"message\"\n" + "  },\n"
                 + "  \"languages\": [\n" + "    \"de\"\n" + "  ],\n" + "  \"requestedAttributes\": {\n"
                 + "    \"TOXICITY\": {}\n" + "  }\n" + "}";

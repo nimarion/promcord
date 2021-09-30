@@ -14,7 +14,8 @@ public class MessageReactionListener extends ListenerAdapter {
 
     public MessageReactionListener() {
 
-        reaction_count = Counter.build().name("reaction_count").help("Count of reactions")
+        reaction_count = Counter.build().name(Configuration.PROMCORD_PREFIX + "reaction_count")
+                .help("Count of reactions")
                 .labelNames((Configuration.TRACK_NAMES != null && Configuration.TRACK_NAMES.equalsIgnoreCase("true"))
                         ? new String[] { "guild", "channel", "channelName", "user", "name", "emote" }
                         : new String[] { "guild", "channel", "user", "emote" })
