@@ -1,7 +1,8 @@
 <configuration>
 
-    <logger name="net.dv8tion.jda" level="ERROR"/>
+    <logger name="net.dv8tion.jda" level="ERROR" />
 
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
 
     <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -16,8 +17,8 @@
     </appender>
 
     <root level="INFO">
-        <appender-ref ref="Console"/>
-        <appender-ref ref="Sentry"/>
+        <appender-ref ref="Console" />
+        <appender-ref ref="Sentry" />
     </root>
 
 </configuration>
